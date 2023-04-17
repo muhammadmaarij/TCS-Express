@@ -119,8 +119,8 @@ const express = require("express");
 // req
 // use
 
-//Model //db
+//Model //interact with db
 //View //frontend
-//Controller //router fn
+//Controller //router fn backend logic
 
 //update layout.jade to add bootstrap or smth

@@ -4,14 +4,25 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var empRouter = require("./routes/emp");
+// var indexRouter = require("./routes/index");
+// var usersRouter = require("./routes/users");
+// var empRouter = require("./routes/emp");
+
+var indexRouter = require("./app_server/routes/index");
+var usersRouter = require("./app_server/routes/users");
+var empRouter = require("./app_server/routes/emp");
+
+var mongoose = require("mongoose");
 
 var app = express();
 
+mongoose
+  .connect("mongodb://0.0.0.0:27017/mydb")
+  .then(() => console.log("Database connection successful"))
+  .catch((err) => console.error("Database connection error:", err));
+
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "app_server", "views"));
 app.set("view engine", "jade");
 
 app.use(logger("dev"));
